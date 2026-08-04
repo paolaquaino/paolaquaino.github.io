@@ -1,0 +1,1 @@
+const elementos={0:{simbolo:'H',nombre:'Hidrógeno',color:'#ff4444',electrones:1,usos:['Combustible','Amoníaco','Celdas de combustible']}};
