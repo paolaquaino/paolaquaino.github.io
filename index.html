@@ -5,6 +5,7 @@
         <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+        <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -34,8 +35,9 @@
                     gesture-handler
                 ></a-image>
 
+                <!-- Fondo blanco para el texto, ubicado al costado (eje X) de la molecula -->
                 <a-plane
-                    position="0 0.02 -0.38"
+                    position="0.55 0.02 0"
                     rotation="-90 0 0"
                     width="0.6"
                     height="0.16"
@@ -45,7 +47,7 @@
 
                 <a-text
                     value="&#961;=1 g/cm3"
-                    position="0 0.03 -0.38"
+                    position="0.55 0.03 0"
                     rotation="-90 0 0"
                     align="center"
                     color="#000000"
@@ -53,6 +55,15 @@
                     baseline="center"
                     side="double"
                 ></a-text>
+
+                <!-- GIF animado (vibracion simetrica) ubicado al otro costado de la molecula -->
+                <a-plane
+                    position="-0.55 0.02 0"
+                    rotation="-90 0 0"
+                    width="0.5"
+                    height="0.5"
+                    material="shader: gif; src: url(assets/Symmetrical_stretching.gif); side: double"
+                ></a-plane>
             </a-marker>
 
             <a-entity camera></a-entity>
