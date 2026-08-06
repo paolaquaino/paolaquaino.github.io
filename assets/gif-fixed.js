@@ -78,9 +78,15 @@
 	  },
 
 	  tick: function tick(t) {
-	    if (!this.__frames || this.paused()) return;
-	    if (Date.now() - this.__startTime >= this.__nextFrameTime) {
-	      this.nextFrame();
+	    try {
+	      if (!this.__frames || this.paused()) return;
+	      if (Date.now() - this.__startTime >= this.__nextFrameTime) {
+	        this.nextFrame();
+	      }
+	    } catch (e) {
+	      /* nunca dejar que un error del gif tumbe el render loop / la camara */
+	      warn('tick error: ' + e.message);
+	      this.__paused = true;
 	    }
 	  },
 
@@ -334,8 +340,13 @@
 	    this.__frames = frames;
 	    this.__frameCnt = times.length;
 	    this.__startTime = Date.now();
-	    this.__width = THREE.Math.nearestPowerOfTwo(frames[0].width);
-	    this.__height = THREE.Math.nearestPowerOfTwo(frames[0].height);
+	    /* THREE.Math fue removido en versiones modernas de three.js (A-Frame 1.4.x);
+	       calculamos la potencia de 2 mas cercana sin depender de esa API */
+	    var __nearestPowerOfTwo = function (value) {
+	      return Math.pow(2, Math.round(Math.log(value) / Math.LN2));
+	    };
+	    this.__width = __nearestPowerOfTwo(frames[0].width);
+	    this.__height = __nearestPowerOfTwo(frames[0].height);
 	    this.__cnv.width = this.__width;
 	    this.__cnv.height = this.__height;
 	    this.__draw();
