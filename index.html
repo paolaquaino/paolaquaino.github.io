@@ -5,7 +5,8 @@
         <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-        <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+        <!-- rawgit.com fue dado de baja en 2019: el shader de GIF se sirve ahora en local -->
+        <script src="assets/gif-fixed.js"></script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -61,8 +62,8 @@
                     position="-0.55 0.02 0"
                     rotation="-90 0 0"
                     width="0.5"
-                    height="0.5"
-                    material="shader: gif; src: url(assets/Symmetrical_stretching.gif); side: double"
+                    height="0.36"
+                    material="shader: gif; src: url(assets/Symmetrical_stretching.gif); autoplay: true"
                 ></a-plane>
             </a-marker>
 
