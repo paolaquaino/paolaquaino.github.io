@@ -36,8 +36,10 @@
                     gesture-handler
                 ></a-image>
 
-                <!-- GIF animado (vibracion simetrica), superpuesto en la mitad superior del recuadro -->
+                <!-- GIF animado (vibracion simetrica), desplazable/escalable igual que la molecula -->
                 <a-plane
+                    class="clickable"
+                    gesture-handler
                     position="0 0.015 -0.22"
                     rotation="-90 0 0"
                     width="0.55"
@@ -45,26 +47,32 @@
                     material="shader: gif; src: url(assets/Symmetrical_stretching.gif); autoplay: true"
                 ></a-plane>
 
-                <!-- Fondo blanco para el texto, superpuesto en la mitad inferior del recuadro -->
-                <a-plane
-                    position="0 0.02 0.32"
-                    rotation="-90 0 0"
-                    width="0.55"
-                    height="0.15"
-                    color="#ffffff"
-                    material="shader: flat; side: double"
-                ></a-plane>
+                <!-- Texto de densidad (con su fondo), agrupados para desplazarse/escalar juntos -->
+                <a-entity
+                    class="clickable"
+                    gesture-handler
+                    position="0 0 0.32"
+                >
+                    <a-plane
+                        position="0 0.02 0"
+                        rotation="-90 0 0"
+                        width="0.55"
+                        height="0.15"
+                        color="#ffffff"
+                        material="shader: flat; side: double"
+                    ></a-plane>
 
-                <a-text
-                    value="&#961;=1 g/cm3"
-                    position="0 0.03 0.32"
-                    rotation="-90 0 0"
-                    align="center"
-                    color="#000000"
-                    width="1.4"
-                    baseline="center"
-                    side="double"
-                ></a-text>
+                    <a-text
+                        value="&#961;=1 g/cm3"
+                        position="0 0.03 0"
+                        rotation="-90 0 0"
+                        align="center"
+                        color="#000000"
+                        width="1.4"
+                        baseline="center"
+                        side="double"
+                    ></a-text>
+                </a-entity>
             </a-marker>
 
             <a-entity camera></a-entity>
